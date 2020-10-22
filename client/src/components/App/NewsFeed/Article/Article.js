@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Header, Grid, Responsive } from 'semantic-ui-react';
+import { Card, Header, Grid, Container } from 'semantic-ui-react';
 import axios from 'axios';
 import ArticleOptions from './ArticleOptions';
 
 // Production Server URL or localhost for local testing
 const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER : 'http://localhost:5000';
-const urlDs = 'https://lab7goodnews-ds.herokuapp.com/stories'
+//const urlDs = 'https://lab7goodnews-ds.herokuapp.com/stories'
+const urlDs = 'https://lambdaxgoodnews.herokuapp.com/stories'
 
 class Article extends Component {
   constructor(props) {
@@ -117,7 +118,7 @@ class Article extends Component {
           maxWidth: '700px'}}>
         <Card.Content style={{ display: 'flex', alignItems: 'center' }}>
           {this.props.article.imageurl && (
-          <Responsive minWidth={'1350'}>
+          <Container fluid>
             <a className='image-container' 
               href={this.props.article.url}
               rel='noopener noreferrer' 
@@ -126,7 +127,7 @@ class Article extends Component {
                 className='article-image' 
                 alt={this.props.article.name}/>
             </a>
-          </Responsive>)}
+          </Container>)}
           <div>
             {(this.props.loggedIn && this.props.articleOptions==='saved') && 
               <div style={{ display: 'flex', justifyContent:'flex-end', margin: '-20px -25px 0px 0px' }}>
@@ -134,7 +135,8 @@ class Article extends Component {
                   textAlign='right'
                   remove={this.removeArticle} 
                   articleOptions={this.props.articleOptions}/>
-              </div>}
+              </div>
+            }
             <Header href={this.props.article.url} rel='noopener noreferrer' target='blank' className='article-title'>
               {this.props.article.name}
             </Header>
@@ -151,7 +153,8 @@ class Article extends Component {
                   save={this.saveArticle}
                   report={this.reportArticle}
                   openModal={this.openModal}
-                  closeModal={this.closeModal}/>}
+                  closeModal={this.closeModal}/>
+              }
             </div>
             <Grid>
               <Grid.Row only='tablet computer' columns={1}>
@@ -166,7 +169,8 @@ class Article extends Component {
                 closeModal={this.closeModal}
                 openModal={this.openModal}
                 articleOptions={this.props.articleOptions}
-                report={this.reportArticle}/>}
+                report={this.reportArticle}/>
+              }
             </Grid>
           </div>
         </Card.Content>

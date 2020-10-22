@@ -11,6 +11,8 @@ const mongoURL = process.env.NODE_ENV === 'production' ? process.env.PROD_MONGOD
 mongoose.set('useCreateIndex', true)
 mongoose.set('useNewUrlParser', true)
 mongoose.set('useFindAndModify', false)
+mongoose.set('useUnifiedTopology', true);
+
 mongoose
   .connect(mongoURL) // Whatever mongo db database we use will go here
   .then(mongo => {

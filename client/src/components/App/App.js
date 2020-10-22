@@ -285,7 +285,12 @@ class App extends Component {
             />}
           <NewsFeed>
             {this.state.evaluate && <EvaluateDescription />}
-            {this.state.articles.map(article => {
+            {this.state.pagination &&
+            <Pagination
+              activePage={this.state.activePage}
+              onPageChange={this.paginationChange}
+              totalPages={30} />}
+           {this.state.articles.map(article => {
               return (
                 <Article
                   key={article._id}
@@ -294,12 +299,7 @@ class App extends Component {
                   articleOptions={this.state.articleOptions}
                   refreshSavedArticles={this.refreshSavedArticles}
                 />)
-            })}
-            {this.state.pagination &&
-            <Pagination
-              activePage={this.state.activePage}
-              onPageChange={this.paginationChange}
-              totalPages={30} />}
+            })}              
           </NewsFeed>
           {this.switchModals(this.state.showModal)}
         </div>
