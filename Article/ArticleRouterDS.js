@@ -13,7 +13,7 @@ module.exports = function () {
       const now = Date.now()
       // a blanced time gap should be set here for Production purpose, choosing to get news records in the past
       // 24 hours here is to facilitate the development process with sufficient data.
-      let gte = now - 24 * 60 * 60 * 1000 
+      let gte = now - 24 * 7 * 60 * 60 * 1000 
       let gteDate = new Date(gte)
       let gteOffset = gteDate.getTimezoneOffset() * 60 * 1000
       let newTimestamp = new Date(gte + gteOffset)

@@ -41,7 +41,7 @@ class SignIn extends Component {
         this.props.login()
         this.props.toggleModal('')
       })
-      .catch(() => {
+      .catch(err => {console.log(err)
         this.setState({ failLogin: true })
       })
   }
