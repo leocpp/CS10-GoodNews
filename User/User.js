@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const ObjectId = mongoose.Schema.Types.ObjectId
 const bcrypt = require('bcrypt')
-const SALT = parseInt(process.env.SALT_ROUNDS, 10)
+const SALT = parseInt(process.env.REACT_APP_SALT_ROUNDS, 10)
 
 const User = mongoose.Schema({
   name: {

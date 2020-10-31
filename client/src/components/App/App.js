@@ -17,7 +17,8 @@ import filter from 'lodash.filter'
 import escapeRegExp from 'lodash.escaperegexp'
 
 // Production Server URL or localhost for local testing
-const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER : 'http://localhost:5000'
+//const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER : 'http://localhost:5000'
+const url = 'http://localhost:5000'
 
 class App extends Component {
   constructor (props) {
@@ -68,9 +69,9 @@ class App extends Component {
     axios.get(`${url}/api/article/get-articles/0/${activePage}`)
       .then(articles => {
         this.setState({
-          articles: articles.data,
-          allArticles: articles.data,
-          searchOptions: articles.data
+          articles: Array.from(articles.data),
+          allArticles: Array.from(articles.data),
+          searchOptions: Array.from(articles.data)
         })
       })
       .catch(err => console.log(err))
@@ -81,8 +82,8 @@ class App extends Component {
     axios.get(`${url}/api/article/get-articles/1/${activePage}`)
       .then(articles => {
         this.setState({
-          articles: articles.data,
-          searchOptions: articles.data,
+          articles: Array.from(articles.data),
+          searchOptions: Array.from(articles.data),
           pagination: true
         })
       })
@@ -92,7 +93,7 @@ class App extends Component {
   fetchTrendingTopics = () => {
     axios.get(`${url}/api/article/topfive`)
       .then(topics => {
-        const trendingTopics = topics.data.map(topic => {
+        const trendingTopics = Array.from(topics.data).map(topic => {
           return topic._id.keyword
         })
         this.setState({ trendingTopics })
@@ -104,8 +105,8 @@ class App extends Component {
     axios.get(`${url}/api/article/${topic}`)
       .then(articles => {
         this.setState({
-          articles: articles.data,
-          searchOptions: articles.data,
+          articles: Array.from(articles.data),
+          searchOptions: Array.from(articles.data),
           pagination: true
         })
       })
@@ -124,8 +125,8 @@ class App extends Component {
         .then(user => {
           const savedArticles = user.data.saved_articles
           this.setState({
-            articles: savedArticles,
-            searchOptions: savedArticles,
+            articles: Array.from(savedArticles),
+            searchOptions: Array.from(savedArticles),
             pagination: false
           })
           window.scrollTo(0, 0)
@@ -135,7 +136,7 @@ class App extends Component {
   }
 
   refreshSavedArticles = (savedArticles) => {
-    this.setState({ articles: savedArticles })
+    this.setState({ articles: Array.from(savedArticles) })
   }
 
   toggleLandingPage = () => {
@@ -290,7 +291,7 @@ class App extends Component {
               activePage={this.state.activePage}
               onPageChange={this.paginationChange}
               totalPages={30} />}
-           {this.state.articles.map(article => {
+           {(this.state.articles.length > 0) && this.state.articles.map(article => {
               return (
                 <Article
                   key={article._id}

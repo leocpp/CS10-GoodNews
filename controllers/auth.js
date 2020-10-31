@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken')
 
 const newToken = (user) => {
-  return jwt.sign(user, process.env.SECRET)
+  return jwt.sign(user, process.env.REACT_APP_SECRET)
 }
 
 const isLoggedIn = (req, res, next) => {
   if (req.headers.authorization) {
     // JWT local auth
     const token = req.headers.authorization
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    jwt.verify(token, process.env.REACT_APP_SECRET, (err, decoded) => {
       if (err) {
       // console.log(err);
         res.status(403).json({ error: 'Please log in.', message: err })
