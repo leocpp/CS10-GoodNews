@@ -3,9 +3,9 @@ const TwitterStrategy = require('passport-twitter').Strategy
 const User = require('../User/User')
 
 passport.use(new TwitterStrategy({
-  consumerKey: process.env.TWITTER_CONSUMER_KEY,
-  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-  callbackURL: process.env.TWITTER_CALLBACK_URL
+  consumerKey: process.env.REACT_APP_TWITTER_CONSUMER_KEY,
+  consumerSecret: process.env.REACT_APP_TWITTER_CONSUMER_SECRET,
+  callbackURL: process.env.REACT_APP_TWITTER_CALLBACK_URL
 },
 function (token, tokenSecret, profile, done) {
   // console.log(profile);

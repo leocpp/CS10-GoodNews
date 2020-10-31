@@ -6,7 +6,7 @@ const path = require('path')
 const port = process.env.PORT || 5000
 
 // process.env if it exists OR local version for testing offline.
-const mongoURL = process.env.NODE_ENV === 'production' ? process.env.PROD_MONGODB : process.env.MONGODB_LOCAL
+const mongoURL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_MONGODB : process.env.REACT_APP_MONGODB_LOCAL
 
 mongoose.set('useCreateIndex', true)
 mongoose.set('useNewUrlParser', true)
