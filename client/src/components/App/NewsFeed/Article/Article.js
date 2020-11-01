@@ -4,7 +4,8 @@ import axios from 'axios';
 import ArticleOptions from './ArticleOptions';
 
 // Production Server URL or localhost for local testing
-const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER : 'http://localhost:5000';
+//const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER : 'http://localhost:5000';
+const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000';
 //const urlDs = 'https://lab7goodnews-ds.herokuapp.com/stories'
 const urlDs = 'https://lambdaxgoodnews.herokuapp.com/stories'
 

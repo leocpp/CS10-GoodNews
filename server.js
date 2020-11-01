@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const server = express()
 const helmet = require('helmet')
-const cors = require('cors')
+// const cors = require('cors')
 const User = require('./User/User')
 
 // const authMiddleware = (req, res, next) => {
@@ -13,15 +13,16 @@ const User = require('./User/User')
 // next();
 // };
 
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 200
-}
+// CORS is not required as static files in Client/build are served to root endpoint as the Server
+// const corsOptions = {
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   preflightContinue: false,
+//   optionsSuccessStatus: 200
+// }
 
-server.use(cors(corsOptions))
+// server.use(cors(corsOptions))
 server.use(helmet())
 server.use(express.json())
 
