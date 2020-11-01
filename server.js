@@ -23,7 +23,7 @@ const User = require('./User/User')
 // }
 
 // server.use(cors(corsOptions))
-server.use(helmet())
+// server.use(helmet())
 server.use(express.json())
 
 const UserRouter = require('./User/UserRouter')
